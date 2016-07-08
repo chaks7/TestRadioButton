@@ -1,0 +1,14 @@
+{
+  "name": "MobileSurvey",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "apsl-react-native-button": "^2.5.0",
+    "react": "^15.2.0",
+    "react-native": "^0.29.0",
+    "react-native-simple-radio-button": "^2.1.1"
+  }
+}

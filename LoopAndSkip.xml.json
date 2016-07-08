@@ -1,0 +1,180 @@
+{
+  "Survey": {
+    "Version": "1.0",
+    "SurveyID": "3874867",
+    "SurveyTitle": "Survey",
+    "SurveyStatus": "-1",
+    "Questions": {
+      "Question": [
+        {
+          "QuestionNumber": "1",
+          "QParts": {
+            "QPart": {
+              "DataType": "1",
+              "QPartNum": "1",
+              "QPartText": "Do you want to take this survey?",
+              "QPartComparison": {
+                "QuestionPartParentId": "0",
+                "ChildPartNumber": "0",
+                "ParentPartNumber": "0",
+                "QuestionPartChildId": "0",
+                "QuestionPartOperatorId": "0",
+                "ValidationTypeId": "0"
+              },
+              "DefinedResponses": {
+                "DefinedResponse": [
+                  {
+                    "Num": "1",
+                    "Desc": "Yes"
+                  },
+                  {
+                    "Num": "2",
+                    "Desc": "No"
+                  }
+                ]
+              }
+            }
+          },
+          "QConditions": {
+            "QCondition": [
+              {
+                "CNum": "1",
+                "Operator": "1",
+                "PartNum": "1",
+                "Value1": "1",
+                "Dest": "2"
+              },
+              {
+                "CNum": "2",
+                "Operator": "1",
+                "PartNum": "1",
+                "Dest": "4"
+              }
+            ]
+          }
+        },
+        {
+          "QuestionNumber": "2",
+          "QParent": "1",
+          "QParentPart": "1",
+          "QParentOption": "Yes",
+          "QParts": {
+            "QPart": {
+              "DataType": "11",
+              "QPartNum": "1",
+              "Min": "3",
+              "Max": "3",
+              "QPartText": "Loop through this question 3 times.",
+              "QPartComparison": {
+                "QuestionPartParentId": "0",
+                "ChildPartNumber": "0",
+                "ParentPartNumber": "0",
+                "QuestionPartChildId": "0",
+                "QuestionPartOperatorId": "0",
+                "ValidationTypeId": "0"
+              },
+              "Tags": {
+                "PTag": "Audit",
+                "STag": "Quantity"
+              }
+            }
+          }
+        },
+        {
+          "QuestionNumber": "3",
+          "QParent": "2",
+          "QParentPart": "1",
+          "QParts": {
+            "QPart": [
+              {
+                "DataType": "1",
+                "QPartNum": "1",
+                "Min": "1",
+                "Max": "4",
+                "QPartText": "Enter a number",
+                "QPartComparison": {
+                  "QuestionPartParentId": "0",
+                  "ChildPartNumber": "0",
+                  "ParentPartNumber": "0",
+                  "QuestionPartChildId": "0",
+                  "QuestionPartOperatorId": "0",
+                  "ValidationTypeId": "0"
+                }
+              },
+              {
+                "DataType": "1",
+                "QPartNum": "2",
+                "QPartText": "Choose a color below",
+                "QPartComparison": {
+                  "QuestionPartParentId": "0",
+                  "ChildPartNumber": "0",
+                  "ParentPartNumber": "0",
+                  "QuestionPartChildId": "0",
+                  "QuestionPartOperatorId": "0",
+                  "ValidationTypeId": "0"
+                },
+                "DefinedResponses": {
+                  "DefinedResponse": [
+                    {
+                      "Num": "1",
+                      "Desc": "Red"
+                    },
+                    {
+                      "Num": "2",
+                      "Desc": "Blue"
+                    },
+                    {
+                      "Num": "3",
+                      "Desc": "Yellow"
+                    },
+                    {
+                      "Num": "4",
+                      "Desc": "Orange"
+                    },
+                    {
+                      "Num": "5",
+                      "Desc": "Black"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "QConditions": {
+            "QCondition": {
+              "CNum": "1",
+              "Operator": "8",
+              "PartNum": "1",
+              "Dest": "2"
+            }
+          }
+        },
+        {
+          "QuestionNumber": "4",
+          "QParts": {
+            "QPart": {
+              "DataType": "5",
+              "QPartNum": "1",
+              "QPartText": "Did you finish the Survey?",
+              "QPartComparison": {
+                "QuestionPartParentId": "0",
+                "ChildPartNumber": "0",
+                "ParentPartNumber": "0",
+                "QuestionPartChildId": "0",
+                "QuestionPartOperatorId": "0",
+                "ValidationTypeId": "0"
+              }
+            }
+          },
+          "QConditions": {
+            "QCondition": {
+              "CNum": "1",
+              "Operator": "1",
+              "PartNum": "1"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
