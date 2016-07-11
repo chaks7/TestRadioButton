@@ -93,9 +93,6 @@ class MobileSurvey extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.containerMain}>
-          {qParts}
-        </View>
         <View style={[styles.containerFooter]}>
           <Button style={styles.button}
             onPress= {this.handleButtonPress.bind(this, "Back") }>
@@ -109,6 +106,9 @@ class MobileSurvey extends Component {
             onPress= {this.handleButtonPress.bind(this, "Done") } >
             Done
           </Button>
+        </View>
+        <View style={styles.containerMain}>
+          {qParts}
         </View>
       </View>
     );
