@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import loadSurvey from './SurveyEngine.js';
+import RadioComponent from './RadioComponent.js';
 import {
   AppRegistry,
   StyleSheet,
@@ -15,7 +16,6 @@ import {
   TouchableNativeFeedback
 } from 'react-native';
 import Button from 'apsl-react-native-button';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 class MobileSurvey extends Component {
 
@@ -35,11 +35,13 @@ class MobileSurvey extends Component {
   }
 
   handleNextButtonPress(data) {
+    console.log('In handleNextButtonPress()');
     var currQ = this.state.currQuestion;
     var nextQuestion = this.state.surveyJson.Question[Number(currQ.QuestionNumber)];
-    console.log(this.state.radioValue);
-    console.log(this.state.radioIndex);
-    console.log(this.state.responseText);
+    if (this.refs.radioV) {
+      var v = this.refs.radioV.state.radioValue;
+      console.log(v);
+    }
     this.setState({ currQuestion: nextQuestion, radioValue: null, radioIndex: -1, responseText: null, });
   }
 
@@ -66,7 +68,7 @@ class MobileSurvey extends Component {
         radioB = QPart.DefinedResponses.DefinedResponse;
         radioPropsArray = radioB.map(function (radioOptions) { return { label: radioOptions.Desc, value: radioOptions.Num } });
       }
-      definedResponses = <RadioComponent radio_props={radioPropsArray} />
+      definedResponses = <RadioComponent radio_props={radioPropsArray} ref="radioV" />
     }
 
     qParts =
@@ -120,85 +122,16 @@ class MobileSurvey extends Component {
 }
 
 const styles = StyleSheet.create({
+  button: { margin: 5, color: 'black', borderRadius: 8, height: 50, width: 100, backgroundColor: '#1155DD', },
   container: { flex: 1, backgroundColor: 'white', borderWidth: 5, borderColor: 'white', borderRadius: 5, },
-  containerMain: { flex: 9, backgroundColor: 'white', borderWidth: 5, borderColor: 'white', borderRadius: 5, },
   containerFooter: { flex: 1, justifyContent: 'space-around', flexDirection: 'row', alignItems: 'flex-end', backgroundColor: 'white', },
-  radioComponent: { backgroundColor: 'white', justifyContent: 'flex-start', },
+  containerMain: { flex: 9, backgroundColor: 'white', borderWidth: 5, borderColor: 'white', borderRadius: 5, },
   instructions: { textAlign: 'left', color: 'black', fontSize: 24, marginBottom: 10, },
   textbox: { color: '#000000', fontSize: 17, height: 36, padding: 7, borderRadius: 4, borderColor: '#cccccc', borderWidth: 1, marginBottom: 10, },
-  button: { margin: 5, color: 'black', borderRadius: 8, height: 50, width: 100, backgroundColor: '#1155DD', },
-  radioStyle: { borderRightWidth: 1, borderColor: '#2196f3', paddingRight: 10 },
   radioButtonWrap: { marginRight: 5 },
+  radioComponent: { backgroundColor: 'white', justifyContent: 'flex-start', },
+  radioStyle: { borderRightWidth: 1, borderColor: '#2196f3', paddingRight: 10 },
 });
 
 AppRegistry.registerComponent('MobileSurvey', () => MobileSurvey);
 
-export default class RadioComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value1: null,
-      value1Index: -1,
-      radio_props: null,
-      initial: -1,
-    }
-  }
-
-  render() {
-    return (
-
-      // <View style={styles.radioComponent}>
-      //   <RadioForm
-      //     //formHorizontal={true}
-      //     radio_props={this.props.radio_props}
-      //     initial={this.state.value1Index}
-      //     animation={true}
-      //     buttonColor={'blue'}
-      //     labelColor={'#000'}
-      //     onPressRadio={(value, index) => {
-      //       this.setState({ value1: value })
-      //       this.setState({ value1Index: index })
-      //     } }
-      //     />
-      // </View>
-      <View style={styles.component}>
-        <RadioForm formHorizontal={false} animation={true} >
-          {this.props.radio_props.map((obj, i) => {
-            var onPress = (value, index) => {
-              this.setState({
-                value1: value,
-                value1Index: index
-              })
-            }
-            return (
-              <RadioButton labelHorizontal={true} key={i} >
-                {/*  You can set RadioButtonLabel before RadioButtonInput */}
-                <RadioButtonInput
-                  obj={obj}
-                  index={i}
-                  isSelected={this.state.value1Index === i}
-                  onPress={onPress}
-                  buttonInnerColor={'blue'}
-                  buttonOuterColor={this.state.value1Index === i ? 'blue' : '#000'}
-                  buttonSize={18}
-                  buttonStyle={{}}
-                  buttonWrapStyle={{ marginLeft: 10 }}
-                  />
-                <RadioButtonLabel
-                  obj={obj}
-                  index={i}
-                  labelHorizontal={true}
-                  onPress={onPress}
-                  labelStyle={{ fontSize: 18, color: '#000' }}
-                  labelWrapStyle={{}}
-                  />
-              </RadioButton>
-            )
-          }) }
-        </RadioForm>
-      </View>
-    );
-  }
-}
-RadioComponent.props = { value1: null, value1Index: -1 };
-//RadioComponent.propTypes = { getDefRespValue: React.PropTypes.func, };
